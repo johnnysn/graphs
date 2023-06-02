@@ -7,15 +7,17 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 public class VerticeDescriptor<T> {
 
-    public long id;
+    public final int id;
 
-    public T value;
+    public final String label;
 
-    public static <T> VerticeDescriptor<T> of(long id, T value) {
-        return new VerticeDescriptor<>(id, value);
+    public final T value;
+
+    public static <T> VerticeDescriptor<T> of(int id, String label, T value) {
+        return new VerticeDescriptor<>(id, label, value);
     }
 
-    public static <T> VerticeDescriptor<T> of(long id) {
-        return new VerticeDescriptor<>(id, null);
+    public static <T> VerticeDescriptor<T> of(int id) {
+        return new VerticeDescriptor<>(id, String.valueOf(id),null);
     }
 }

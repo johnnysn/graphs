@@ -12,21 +12,21 @@ import java.util.stream.Collectors;
 
 public class DirectedGraphBuilder {
 
-    public <T> Graph<T> build(Set<VerticeDescriptor<T>> vDescriptors, Set<EdgeDescriptor<T>> edges) {
-        var sortedVertices = vDescriptors.stream().map(d -> Vertice.of(d.id, d.value)).sorted().toList();
+    public <T> Graph<T> build(Set<VerticeDescriptor<T>> vDescriptors, Set<EdgeDescriptor> edges) {
+        var sortedVertices = vDescriptors.stream().map(d -> Vertice.of(d.id, d.label, d.value)).sorted().toList();
         var verticeMap = sortedVertices.stream().collect(Collectors.toMap(Vertice::getId, Function.identity()));
         var sortedEdges = edges.stream().map(d -> Edge.of(verticeMap.get(d.id1), verticeMap.get(d.id2), d.weight))
                 .sorted().toList();
 
-        var adj = new HashMap<Long, List<Edge<T>>>();
+        var adj = new ArrayList<List<Edge<T>>>();
         for (var vertice: sortedVertices) {
-            adj.put(vertice.getId(), new ArrayList<>());
+            adj.add(new ArrayList<>());
         }
         for (var edge: sortedEdges) {
             adj.get(edge.getU().getId()).add(edge);
         }
         
-        return new Graph<T>(sortedVertices, sortedEdges, adj);
+        return new Graph<>(sortedVertices, sortedEdges, adj);
     }
 
 }

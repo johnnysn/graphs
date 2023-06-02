@@ -5,19 +5,19 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(of = {"id1", "id2"})
 @AllArgsConstructor
-public class EdgeDescriptor<T> {
+public class EdgeDescriptor {
 
-    public final long id1;
+    public final int id1;
 
-    public final long id2;
+    public final int id2;
 
     public final Double weight;
 
-    public static <T> EdgeDescriptor<T> of(long id1, long id2) {
-        return new EdgeDescriptor<>(id1, id2, null);
+    public static  EdgeDescriptor of(int id1, int id2) {
+        return new EdgeDescriptor(id1, id2, null);
     }
 
-    public static <T> EdgeDescriptor<T> of(long id1, long id2, Double weight) {
-        return new EdgeDescriptor<>(id1, id2, weight);
+    public static  EdgeDescriptor of(int id1, int id2, Double weight) {
+        return new EdgeDescriptor(id1, id2, weight);
     }
 }

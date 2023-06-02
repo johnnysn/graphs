@@ -19,13 +19,13 @@ class DirectedGraphBuilderTest {
     @Test
     void mustBuildGraphCorrectly() {
         // arrange
-        var verticesDescriptors = Set.of(VerticeDescriptor.of(1), VerticeDescriptor.of(2), VerticeDescriptor.of(3), VerticeDescriptor.of(4));
+        var verticesDescriptors = Set.of(VerticeDescriptor.of(0), VerticeDescriptor.of(1), VerticeDescriptor.of(2), VerticeDescriptor.of(3));
         var edgesDescriptors = Set.of(
+                EdgeDescriptor.of(0, 1),
+                EdgeDescriptor.of(0, 2),
                 EdgeDescriptor.of(1, 2),
-                EdgeDescriptor.of(1, 3),
                 EdgeDescriptor.of(2, 3),
-                EdgeDescriptor.of(3, 4),
-                EdgeDescriptor.of(4, 2)
+                EdgeDescriptor.of(3, 1)
         );
         // act
         var graph = subject.build(verticesDescriptors, edgesDescriptors);

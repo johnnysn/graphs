@@ -1,4 +1,4 @@
-package com.uriel.graphs.algorithms.dfs;
+package com.uriel.graphs.algorithms.bfs;
 
 import com.uriel.graphs.algorithms.types.VisitColor;
 import com.uriel.graphs.types.Vertice;
@@ -9,20 +9,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class DFSData {
+public class BFSData {
     private int[] d;
-    private int[] f;
     private VisitColor[] colors;
     private Vertice<?>[] pi;
 
-    public DFSData(int n) {
+    public BFSData(int n) {
         d = new int[n];
-        f = new int[n];
         pi = new Vertice[n];
         colors = new VisitColor[n];
         for (int i = 0; i < n; i++) {
             d[i] = -1;
-            f[i] = -1;
             pi[i] = null;
             colors[i] = VisitColor.WHITE;
         }

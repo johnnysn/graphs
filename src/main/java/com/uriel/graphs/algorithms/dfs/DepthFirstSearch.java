@@ -26,6 +26,7 @@ public class DepthFirstSearch {
         for (var edge : adj.get(u.getId())) {
             var v = edge.getV();
             if (data.getColors()[v.getId()] == VisitColor.WHITE) {
+                data.getPi()[v.getId()] = u;
                 time = dfsVisit(g, v, time, data, consumer);
             }
         }

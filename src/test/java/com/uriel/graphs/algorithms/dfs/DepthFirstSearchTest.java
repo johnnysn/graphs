@@ -30,7 +30,7 @@ class DepthFirstSearchTest {
                 EdgeDescriptor.of(0, 2),
                 EdgeDescriptor.of(1, 2),
                 EdgeDescriptor.of(2, 3),
-                EdgeDescriptor.of(3, 1)
+                EdgeDescriptor.of(3, 0)
         );
         var graph = builder.build(verticesDescriptors, edgesDescriptors);
         // act
@@ -40,6 +40,10 @@ class DepthFirstSearchTest {
         for (int i = 0; i < data.getD().length; i++) {
             Assertions.assertTrue(data.getD()[i] < data.getF()[i]);
         }
+        Assertions.assertEquals(0, data.getPi()[1].getId()); // 0 -> 1
+        Assertions.assertEquals(1, data.getPi()[2].getId()); // 1 -> 2
+        Assertions.assertEquals(2, data.getPi()[3].getId()); // 2 -> 3
+        Assertions.assertNull(data.getPi()[0]); // 3 -> X
         System.out.println(Arrays.toString(data.getColors()));
         System.out.println(Arrays.toString(data.getD()));
         System.out.println(Arrays.toString(data.getF()));

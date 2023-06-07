@@ -18,6 +18,18 @@ public class DepthFirstSearch {
         return data;
     }
 
+    public DFSData dfs(Graph<?> g, Consumer<Vertice<?>> consumer) {
+        var V = g.getVertices();
+        var data = new DFSData(V.size());
+
+        for (var root : V) {
+            if (data.getColors()[root.getId()] == VisitColor.WHITE)
+                dfsVisit(g, root, 1, data, consumer);
+        }
+
+        return data;
+    }
+
     private int dfsVisit(Graph<?> g, Vertice<?> u, int time, DFSData data, Consumer<Vertice<?>> consumer) {
         var adj = g.getAdj();
         data.getColors()[u.getId()] = VisitColor.GRAY;

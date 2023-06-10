@@ -24,14 +24,9 @@ class DepthFirstSearchTest {
     @Test
     void mustSearchCorrectly() {
         // arrange
-        var verticesDescriptors = Set.of(VerticeDescriptor.of(0), VerticeDescriptor.of(1), VerticeDescriptor.of(2), VerticeDescriptor.of(3));
-        var edgesDescriptors = Set.of(
-                EdgeDescriptor.of(0, 1),
-                EdgeDescriptor.of(0, 2),
-                EdgeDescriptor.of(1, 2),
-                EdgeDescriptor.of(2, 3),
-                EdgeDescriptor.of(3, 0)
-        );
+        var verticesDescriptors = VerticeDescriptor.of("0,1,2,3");
+        var edgesDescriptors = EdgeDescriptor
+                .of("0->1, 0->2, 1->2, 2->3, 3->0");
         var graph = builder.build(verticesDescriptors, edgesDescriptors);
         // act
         var data = subject.dfs(graph, 0, System.out::println);

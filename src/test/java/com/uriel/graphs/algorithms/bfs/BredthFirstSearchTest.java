@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,21 +26,10 @@ class BredthFirstSearchTest {
     @Test
     void mustSearchCorrectly() {
         // arrange
-        var verticesDescriptors = Set.of(
-                VerticeDescriptor.of(0), VerticeDescriptor.of(1),
-                VerticeDescriptor.of(2), VerticeDescriptor.of(3),
-                VerticeDescriptor.of(4)
-        );
-        var edgesDescriptors = Set.of(
-                EdgeDescriptor.of(0, 1),
-                EdgeDescriptor.of(0, 2),
-                EdgeDescriptor.of(0, 3),
-                EdgeDescriptor.of(1, 2),
-                EdgeDescriptor.of(1, 4),
-                EdgeDescriptor.of(2, 3),
-                EdgeDescriptor.of(3, 1),
-                EdgeDescriptor.of(4, 2)
-        );
+        var verticesDescriptors = VerticeDescriptor.of("0,1,2,3,4");
+        var edgesDescriptors = EdgeDescriptor.of("""
+                0 -> 1, 0 -> 2, 0 -> 3, 1 -> 2, 1 -> 4, 2 -> 3, 3 -> 1, 4 -> 2
+                """);
         var g = builder.build(verticesDescriptors, edgesDescriptors);
         // act
         var data = subject.bfs(g, 0, System.out::println);

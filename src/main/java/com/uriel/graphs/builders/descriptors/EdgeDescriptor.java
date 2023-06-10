@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -30,7 +29,15 @@ public class EdgeDescriptor {
         return Arrays.stream(description.split("\\s*,\\s*"))
                 .map(d -> {
                     var ids = d.trim().split("\\s*->\\s*");
-                    return EdgeDescriptor.of(Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
+                    var u = ids[0];
+                    var v = ids[1];
+                    if (ids[1].contains(":")) {
+                        var aux = ids[1].split("\\s*:\\s*");
+                        v = aux[0];
+                        var weight = Double.parseDouble(aux[1]);
+                        return EdgeDescriptor.of(Integer.parseInt(u), Integer.parseInt(v), weight);
+                    }
+                    return EdgeDescriptor.of(Integer.parseInt(u), Integer.parseInt(v));
                 })
                 .collect(Collectors.toSet());
     }

@@ -3,12 +3,14 @@ package com.uriel.graphs.algorithms.bfs;
 import com.uriel.graphs.algorithms.types.VisitColor;
 import com.uriel.graphs.types.Graph;
 import com.uriel.graphs.types.Vertice;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Set;
 import java.util.function.Consumer;
 
+@Component
 public class BredthFirstSearch {
 
     public BFSData bfs(Graph<?> g, int rootIndex, Consumer<Vertice<?>> consumer) {

@@ -5,11 +5,13 @@ import com.uriel.graphs.builders.descriptors.VerticeDescriptor;
 import com.uriel.graphs.types.Edge;
 import com.uriel.graphs.types.Graph;
 import com.uriel.graphs.types.Vertice;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Component
 public class DirectedGraphBuilder {
 
     public <T> Graph<T> build(Set<VerticeDescriptor<T>> vDescriptors, Set<EdgeDescriptor> edges) {

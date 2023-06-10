@@ -3,10 +3,12 @@ package com.uriel.graphs.algorithms.sort;
 import com.uriel.graphs.algorithms.dfs.DepthFirstSearch;
 import com.uriel.graphs.algorithms.types.Pair;
 import com.uriel.graphs.types.Graph;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class TopologicalSort {
 
     private final DepthFirstSearch depthFirstSearch;
@@ -25,7 +27,7 @@ public class TopologicalSort {
 
         return pairs.stream()
                 .sorted((p1, p2) -> -Integer.compare(p1.getValue(), p2.getValue()))
-                .map(p -> p.getIndex()).toList();
+                .map(Pair::getIndex).toList();
     }
 
 }

@@ -3,9 +3,7 @@ package com.uriel.graphs.builders.descriptors;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -29,7 +27,15 @@ public class VerticeDescriptor<T> {
 
     public static <T> Set<VerticeDescriptor<T>> of(String ids) {
         return Arrays.stream(ids.split("\\s*,\\s*"))
-                .map(id -> VerticeDescriptor.<T>of(Integer.parseInt(id.trim())))
+                .map(desc -> {
+                    if (desc.contains(":")) {
+                        var aux = desc.split("\\s*:\\s*");
+                        var id = Integer.parseInt(aux[0]);
+                        var label = aux[1];
+                        return VerticeDescriptor.<T>of(id, label, null);
+                    }
+                    return VerticeDescriptor.<T>of(Integer.parseInt(desc));
+                })
                 .collect(Collectors.toSet());
     }
  }

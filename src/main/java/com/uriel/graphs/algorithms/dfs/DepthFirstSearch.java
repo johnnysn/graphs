@@ -3,9 +3,11 @@ package com.uriel.graphs.algorithms.dfs;
 import com.uriel.graphs.algorithms.types.VisitColor;
 import com.uriel.graphs.types.Graph;
 import com.uriel.graphs.types.Vertice;
+import org.springframework.stereotype.Component;
 
 import java.util.function.Consumer;
 
+@Component
 public class DepthFirstSearch {
 
     public DFSData dfs(Graph<?> g, int rootIndex, Consumer<Vertice<?>> consumer) {
@@ -22,9 +24,11 @@ public class DepthFirstSearch {
         var V = g.getVertices();
         var data = new DFSData(V.size());
 
+        int time = 1;
         for (var root : V) {
-            if (data.getColors()[root.getId()] == VisitColor.WHITE)
-                dfsVisit(g, root, 1, data, consumer);
+            if (data.getColors()[root.getId()] == VisitColor.WHITE) {
+                time = dfsVisit(g, root, time, data, consumer) + 1;
+            }
         }
 
         return data;

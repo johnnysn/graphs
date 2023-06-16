@@ -21,6 +21,10 @@ public class Edge <T> implements Comparable<Edge<T>> {
         return new Edge<>(u, v, weight);
     }
 
+    public static <T> Edge<T> of(int uId, int vId) {
+        return new Edge<>(Vertice.of(uId), Vertice.of(vId), null);
+    }
+
     @Override
     public String toString() {
         return "e{" +

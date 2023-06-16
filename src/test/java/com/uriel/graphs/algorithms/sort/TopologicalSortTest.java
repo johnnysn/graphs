@@ -2,7 +2,7 @@ package com.uriel.graphs.algorithms.sort;
 
 import com.uriel.graphs.algorithms.dfs.DFSData;
 import com.uriel.graphs.algorithms.dfs.DepthFirstSearch;
-import com.uriel.graphs.builders.DirectedGraphBuilder;
+import com.uriel.graphs.builders.GraphBuilder;
 import com.uriel.graphs.builders.descriptors.EdgeDescriptor;
 import com.uriel.graphs.builders.descriptors.VerticeDescriptor;
 import com.uriel.graphs.types.Vertice;
@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Set;
 import java.util.function.Consumer;
 
 import static org.mockito.Mockito.*;
@@ -20,11 +19,11 @@ class TopologicalSortTest {
     private final DepthFirstSearch depthFirstSearch;
     private final TopologicalSort subject;
 
-    private final DirectedGraphBuilder builder;
+    private final GraphBuilder builder;
 
     TopologicalSortTest() {
         depthFirstSearch = mock(DepthFirstSearch.class);
-        builder = new DirectedGraphBuilder();
+        builder = new GraphBuilder();
 
         subject = new TopologicalSort(depthFirstSearch);
     }

@@ -1,22 +1,21 @@
 package com.uriel.graphs.algorithms.dfs;
 
 import com.uriel.graphs.algorithms.types.VisitColor;
-import com.uriel.graphs.builders.DirectedGraphBuilder;
+import com.uriel.graphs.builders.GraphBuilder;
 import com.uriel.graphs.builders.descriptors.EdgeDescriptor;
 import com.uriel.graphs.builders.descriptors.VerticeDescriptor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Set;
 
 class DepthFirstSearchTest {
 
-    private final DirectedGraphBuilder builder;
+    private final GraphBuilder builder;
     private final DepthFirstSearch subject;
 
     DepthFirstSearchTest() {
-        builder = new DirectedGraphBuilder();
+        builder = new GraphBuilder();
 
         subject = new DepthFirstSearch();
     }

@@ -1,25 +1,23 @@
 package com.uriel.graphs.algorithms.bfs;
 
 import com.uriel.graphs.algorithms.types.VisitColor;
-import com.uriel.graphs.builders.DirectedGraphBuilder;
+import com.uriel.graphs.builders.GraphBuilder;
 import com.uriel.graphs.builders.descriptors.EdgeDescriptor;
 import com.uriel.graphs.builders.descriptors.VerticeDescriptor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Objects;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BredthFirstSearchTest {
 
-    private final DirectedGraphBuilder builder;
+    private final GraphBuilder builder;
     private final BredthFirstSearch subject;
 
     BredthFirstSearchTest() {
-        builder = new DirectedGraphBuilder();
+        builder = new GraphBuilder();
         subject = new BredthFirstSearch();
     }
 

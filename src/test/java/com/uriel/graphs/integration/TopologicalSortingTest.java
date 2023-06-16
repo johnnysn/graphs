@@ -1,7 +1,7 @@
 package com.uriel.graphs.integration;
 
 import com.uriel.graphs.algorithms.sort.TopologicalSort;
-import com.uriel.graphs.builders.DirectedGraphBuilder;
+import com.uriel.graphs.builders.GraphBuilder;
 import com.uriel.graphs.builders.descriptors.EdgeDescriptor;
 import com.uriel.graphs.builders.descriptors.VerticeDescriptor;
 import org.junit.jupiter.api.Assertions;
@@ -18,7 +18,7 @@ class TopologicalSortingTest {
     private TopologicalSort topologicalSort;
 
     @Autowired
-    private DirectedGraphBuilder builder;
+    private GraphBuilder builder;
 
     @Test
     void mustExecuteCorrectly() {

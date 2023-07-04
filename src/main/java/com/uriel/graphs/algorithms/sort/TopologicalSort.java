@@ -2,7 +2,7 @@ package com.uriel.graphs.algorithms.sort;
 
 import com.uriel.graphs.algorithms.dfs.DepthFirstSearch;
 import com.uriel.graphs.algorithms.types.Pair;
-import com.uriel.graphs.types.Graph;
+import com.uriel.graphs.types.models.Graph;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

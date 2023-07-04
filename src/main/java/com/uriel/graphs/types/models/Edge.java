@@ -1,17 +1,19 @@
-package com.uriel.graphs.types;
+package com.uriel.graphs.types.models;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @EqualsAndHashCode(of = {"u", "v"})
 @AllArgsConstructor
 public class Edge <T> implements Comparable<Edge<T>> {
 
-    private final Vertice<T> u;
-    private final Vertice<T> v;
-    private Double weight;
+    protected final Vertice<T> u;
+    protected final Vertice<T> v;
+    @Setter
+    protected Double weight;
 
     public static <T> Edge<T> of(Vertice<T> u, Vertice<T> v) {
         return new Edge<>(u, v, null);

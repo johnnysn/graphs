@@ -1,8 +1,8 @@
 package com.uriel.graphs.algorithms.bfs;
 
 import com.uriel.graphs.algorithms.types.VisitColor;
-import com.uriel.graphs.types.Graph;
-import com.uriel.graphs.types.Vertice;
+import com.uriel.graphs.types.models.Graph;
+import com.uriel.graphs.types.models.Vertice;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayDeque;

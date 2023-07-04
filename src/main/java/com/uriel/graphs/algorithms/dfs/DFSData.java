@@ -1,7 +1,7 @@
 package com.uriel.graphs.algorithms.dfs;
 
 import com.uriel.graphs.algorithms.types.VisitColor;
-import com.uriel.graphs.types.Vertice;
+import com.uriel.graphs.types.models.Vertice;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

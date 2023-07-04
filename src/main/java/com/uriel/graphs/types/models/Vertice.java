@@ -1,4 +1,4 @@
-package com.uriel.graphs.types;
+package com.uriel.graphs.types.models;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -35,7 +35,8 @@ public class Vertice<T> implements Comparable<Vertice<T>> {
     @Override
     public String toString() {
         return "v{" +
-                + id +
+                id +
+                (label == null ? "" : ", " + label) +
                 (value == null ? "" : ", value=" + value) +
                 '}';
     }

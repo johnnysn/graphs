@@ -2,8 +2,8 @@ package com.uriel.graphs.builders;
 
 import com.uriel.graphs.builders.descriptors.EdgeDescriptor;
 import com.uriel.graphs.builders.descriptors.VerticeDescriptor;
-import com.uriel.graphs.types.Edge;
-import com.uriel.graphs.types.Graph;
+import com.uriel.graphs.types.models.Edge;
+import com.uriel.graphs.types.models.Graph;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 

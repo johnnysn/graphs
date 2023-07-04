@@ -5,7 +5,7 @@ import com.uriel.graphs.algorithms.dfs.DepthFirstSearch;
 import com.uriel.graphs.builders.GraphBuilder;
 import com.uriel.graphs.builders.descriptors.EdgeDescriptor;
 import com.uriel.graphs.builders.descriptors.VerticeDescriptor;
-import com.uriel.graphs.types.Vertice;
+import com.uriel.graphs.types.models.Vertice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

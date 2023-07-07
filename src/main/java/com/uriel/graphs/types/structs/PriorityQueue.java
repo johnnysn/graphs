@@ -1,19 +1,18 @@
 package com.uriel.graphs.types.structs;
 
 import java.util.AbstractQueue;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-public class PriorityQueue<E> extends AbstractQueue<E> {
-    private List<E> heap;
+public class PriorityQueue<E extends Comparable<E>> extends AbstractQueue<E> {
+
+    private MinHeap<E> heap;
 
     public PriorityQueue() {
-        heap = new ArrayList<>();
+        heap = new MinHeap<>();
     }
 
     public PriorityQueue(int initialCapacity) {
-        heap = new ArrayList<>(initialCapacity);
+        heap = new MinHeap<>(initialCapacity);
     }
 
     @Override
@@ -28,7 +27,9 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
     @Override
     public boolean offer(E e) {
-        return false;
+
+
+        return true;
     }
 
     @Override

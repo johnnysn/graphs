@@ -3,6 +3,7 @@ package com.uriel.graphs.algorithms.mst;
 import com.uriel.graphs.exceptions.UnsupportedGraphException;
 import com.uriel.graphs.types.models.Edge;
 import com.uriel.graphs.types.models.Graph;
+import com.uriel.graphs.types.structs.Heapable;
 import com.uriel.graphs.types.structs.PriorityQueue;
 import org.springframework.stereotype.Component;
 
@@ -29,9 +30,8 @@ public class Prim {
             for (var e : g.getAdj().get(state.index)) {
                 var vId = e.getV().getId();
                 if (states[vId].inQueue && states[vId].key > e.getWeight()) {
-                    states[vId].key = e.getWeight();
                     states[vId].edge = e;
-                    // update priority queue: Must implement type
+                    queue.decreasePriority(states[vId], e.getWeight());
                 }
             }
         }
@@ -39,7 +39,7 @@ public class Prim {
         return data;
     }
 
-    private static class State implements Comparable<State> {
+    private static class State implements Heapable {
         int index;
         double key = Double.MAX_VALUE;
         Edge<?> edge = null;
@@ -49,9 +49,15 @@ public class Prim {
             this.index = index;
         }
 
+
         @Override
-        public int compareTo(State o) {
-            return Double.compare(key, o.key);
+        public double getKey() {
+            return key;
+        }
+
+        @Override
+        public void setKey(double value) {
+            key = value;
         }
     }
 

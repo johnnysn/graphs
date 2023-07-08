@@ -1,11 +1,14 @@
 package com.uriel.graphs.types.structs;
 
 import java.util.AbstractQueue;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
-public class PriorityQueue<E extends Comparable<E>> extends AbstractQueue<E> {
+public class PriorityQueue<E extends Heapable> extends AbstractQueue<E> {
 
     private MinHeap<E> heap;
+    private Map<E, Integer> heapMap = new HashMap<>();
 
     public PriorityQueue() {
         heap = new MinHeap<>();
@@ -20,6 +23,15 @@ public class PriorityQueue<E extends Comparable<E>> extends AbstractQueue<E> {
         return heap.iterator();
     }
 
+    public boolean decreasePriority(E e, double k) {
+        Integer index = heapMap.get(e);
+        if (index == null) return false;
+
+        heap.decreaseKey(index, k, heapMap::put);
+
+        return true;
+    }
+
     @Override
     public int size() {
         return heap.size();
@@ -27,18 +39,22 @@ public class PriorityQueue<E extends Comparable<E>> extends AbstractQueue<E> {
 
     @Override
     public boolean offer(E e) {
-
+        heap.add(e, heapMap::put);
 
         return true;
     }
 
     @Override
     public E poll() {
-        return null;
+        return heap.extractRoot(heapMap::put);
     }
 
     @Override
     public E peek() {
-        return null;
+        return heap.root();
+    }
+
+    protected MinHeap<E> getHeap() {
+        return heap;
     }
 }

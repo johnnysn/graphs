@@ -54,7 +54,7 @@ public class PriorityQueue<E extends Heapable> extends AbstractQueue<E> {
         return heap.root();
     }
 
-    protected MinHeap<E> getHeap() {
+    public MinHeap<E> getHeap() {
         return heap;
     }
 }

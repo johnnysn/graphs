@@ -22,6 +22,7 @@ public class Prim {
             if (v.getId() == root) states[v.getId()].key = 0;
             queue.add(states[v.getId()]);
         });
+        System.out.println(queue.getHeap().getData());
 
         while (!queue.isEmpty()) {
             var state = queue.poll();
@@ -34,6 +35,7 @@ public class Prim {
                     queue.decreasePriority(states[vId], e.getWeight());
                 }
             }
+            System.out.println(queue.getHeap().getData());
         }
 
         return data;
@@ -58,6 +60,16 @@ public class Prim {
         @Override
         public void setKey(double value) {
             key = value;
+        }
+
+        @Override
+        public String toString() {
+            return "State{" +
+                    "index=" + index +
+                    ", key=" + key +
+                    ", edge=" + edge +
+                    ", inQueue=" + inQueue +
+                    '}';
         }
     }
 

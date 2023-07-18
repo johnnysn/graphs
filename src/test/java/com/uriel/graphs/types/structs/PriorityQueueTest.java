@@ -75,6 +75,13 @@ class PriorityQueueTest {
         // assert
         System.out.println(subject.getHeap().getData());
         assertEquals(-1, subject.peek().getKey());
+        // act again
+        subject.decreasePriority(elem2, 1);
+        System.out.println(subject.getHeap().getData());
+        subject.poll();
+        System.out.println(subject.getHeap().getData());
+        // assert again
+        assertEquals(1, subject.peek().getKey());
     }
 }
 

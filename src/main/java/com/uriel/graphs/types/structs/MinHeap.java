@@ -36,7 +36,7 @@ public class MinHeap<E extends Heapable> implements Iterable<E> {
         return array.get(0);
     }
 
-    protected List<E> getData() {
+    public List<E> getData() {
         return array.subList(0, size);
     }
 
@@ -97,7 +97,7 @@ public class MinHeap<E extends Heapable> implements Iterable<E> {
         if (left >= 0 && array.get(left).getKey() < array.get(i).getKey()) {
             lowest = left;
         }
-        if (right >= 0 && array.get(right).getKey() < lowest) {
+        if (right >= 0 && array.get(right).getKey() < array.get(lowest).getKey()) {
             lowest = right;
         }
         if (lowest == i) return;

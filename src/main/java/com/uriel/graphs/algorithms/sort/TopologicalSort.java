@@ -26,7 +26,7 @@ public class TopologicalSort {
             pairs.add(new Pair<>(i, fs[i]));
 
         return pairs.stream()
-                .sorted((p1, p2) -> -Integer.compare(p1.getValue(), p2.getValue()))
+                .sorted((p1, p2) -> - Integer.compare(p1.getValue(), p2.getValue()))
                 .map(Pair::getIndex).toList();
     }
 

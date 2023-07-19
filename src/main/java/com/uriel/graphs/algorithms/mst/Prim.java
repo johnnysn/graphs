@@ -22,20 +22,20 @@ public class Prim {
             if (v.getId() == root) states[v.getId()].key = 0;
             queue.add(states[v.getId()]);
         });
-        System.out.println(queue.getHeap().getData());
 
         while (!queue.isEmpty()) {
             var state = queue.poll();
             state.inQueue = false;
             if (state.edge != null) data.getEdges().add(state.edge);
-            for (var e : g.getAdj().get(state.index)) {
-                var vId = e.getV().getId();
-                if (states[vId].inQueue && states[vId].key > e.getWeight()) {
-                    states[vId].edge = e;
-                    queue.decreasePriority(states[vId], e.getWeight());
+            int u_id = state.index;
+            for (var e : g.getAdj().get(u_id)) {
+                int v_id = e.getV().getId();
+                if (v_id == u_id) v_id = e.getU().getId(); // Dealing with bidirectionality
+                if (states[v_id].inQueue && states[v_id].key > e.getWeight()) {
+                    states[v_id].edge = e;
+                    queue.decreasePriority(states[v_id], e.getWeight());
                 }
             }
-            System.out.println(queue.getHeap().getData());
         }
 
         return data;

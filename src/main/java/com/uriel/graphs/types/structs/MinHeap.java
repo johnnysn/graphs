@@ -36,7 +36,7 @@ public class MinHeap<E extends Heapable> implements Iterable<E> {
         return array.get(0);
     }
 
-    public List<E> getData() {
+    protected List<E> getData() {
         return array.subList(0, size);
     }
 

@@ -35,7 +35,7 @@ public class BredthFirstSearch {
         var adj = g.getAdj();
         data.getD()[u.getId()] = time;
         for (var e : adj.get(u.getId())) {
-            var v = e.getV();
+            var v = e.getTo();
             if (data.getColors()[v.getId()] == VisitColor.WHITE) {
                 data.getColors()[v.getId()] = VisitColor.GRAY;
                 data.getPi()[v.getId()] = u;

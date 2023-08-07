@@ -40,7 +40,7 @@ public class DepthFirstSearch {
         data.getD()[u.getId()] = time++;
         consumer.accept(u);
         for (var edge : adj.get(u.getId())) {
-            var v = edge.getV();
+            var v = edge.getTo();
             if (data.getColors()[v.getId()] == VisitColor.WHITE) {
                 data.getPi()[v.getId()] = u;
                 time = dfsVisit(g, v, time, data, consumer);

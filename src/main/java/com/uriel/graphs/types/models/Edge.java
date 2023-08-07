@@ -6,12 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@EqualsAndHashCode(of = {"u", "v"})
+@EqualsAndHashCode(of = {"from", "to"})
 @AllArgsConstructor
 public class Edge <T> implements Comparable<Edge<T>> {
 
-    protected final Vertice<T> u;
-    protected final Vertice<T> v;
+    protected final Vertice<T> from;
+    protected final Vertice<T> to;
     @Setter
     protected Double weight;
 
@@ -30,14 +30,14 @@ public class Edge <T> implements Comparable<Edge<T>> {
     @Override
     public String toString() {
         return "e{" +
-                u.getId() + " -> " + v.getId() +
+                from.getId() + " -> " + to.getId() +
                 (weight != null ? ", weight=" + weight : "") +
                 '}';
     }
 
     @Override
     public int compareTo(Edge<T> o) {
-        var compareToSource = this.u.compareTo(o.u);
-        return (compareToSource == 0 ? this.v.compareTo(o.v) : compareToSource);
+        var compareToSource = this.from.compareTo(o.from);
+        return (compareToSource == 0 ? this.to.compareTo(o.to) : compareToSource);
     }
 }

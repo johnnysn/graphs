@@ -29,8 +29,8 @@ public class Prim {
             if (state.edge != null) data.getEdges().add(state.edge);
             int u_id = state.index;
             for (var e : g.getAdj().get(u_id)) {
-                int v_id = e.getV().getId();
-                if (v_id == u_id) v_id = e.getU().getId(); // Dealing with bidirectionality
+                int v_id = e.getTo().getId();
+                if (v_id == u_id) v_id = e.getFrom().getId(); // Dealing with bidirectionality
                 if (states[v_id].inQueue && states[v_id].key > e.getWeight()) {
                     states[v_id].edge = e;
                     queue.decreasePriority(states[v_id], e.getWeight());

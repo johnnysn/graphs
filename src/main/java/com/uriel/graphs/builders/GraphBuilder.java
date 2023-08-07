@@ -27,9 +27,9 @@ public class GraphBuilder {
         var adj = new ArrayList<List<Edge<T>>>();
         sortedVertices.forEach(v -> adj.add(new ArrayList<>()));
         for (var edge : sortedEdges) {
-            adj.get(edge.getU().getId()).add(edge);
+            adj.get(edge.getFrom().getId()).add(edge);
             if (bidirectional) {
-                adj.get(edge.getV().getId()).add(edge);
+                adj.get(edge.getTo().getId()).add(edge);
             }
         }
 

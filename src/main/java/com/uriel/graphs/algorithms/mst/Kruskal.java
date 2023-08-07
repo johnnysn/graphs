@@ -24,8 +24,8 @@ public class Kruskal {
         var edges = g.getEdges().stream().sorted(Comparator.comparing(Edge::getWeight)).toList();
 
         for (var edge: edges) {
-            var setU = sets.get(edge.getU().getId());
-            var setV = sets.get(edge.getV().getId());
+            var setU = sets.get(edge.getFrom().getId());
+            var setV = sets.get(edge.getTo().getId());
 
             if (setU != setV) {
                 setU.addAll(setV); // Merge sets

@@ -36,6 +36,8 @@ public class Djikstra {
             var u = V.get(u_state.index);
             u_state.inQueue = false;
             for (var e : adj.get(u.getId())) {
+                if (e.getWeight() < 0)
+                    throw new UnsupportedGraphException("This algorithm does not support negative-weighted edges.");
                 var v = e.getTo();
                 var v_state = states[v.getId()];
                 if (v_state.inQueue && d[u.getId()] + e.getWeight() < d[v.getId()]) {

@@ -4,6 +4,8 @@ import com.uriel.graphs.builders.GraphBuilder;
 import com.uriel.graphs.builders.descriptors.EdgeDescriptor;
 import com.uriel.graphs.builders.descriptors.VerticeDescriptor;
 import static org.junit.jupiter.api.Assertions.*;
+
+import com.uriel.graphs.exceptions.UnsupportedGraphException;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -16,6 +18,16 @@ class DjikstraTest {
     DjikstraTest() {
         builder = new GraphBuilder();
         subject = new Djikstra();
+    }
+
+    @Test
+    void mustThrowExceptionIfGraphHasNegativeWeightedEdge() {
+        // arrange
+        var g = builder.build(VerticeDescriptor.of("0:a, 1:b, 2:c, 3:d"), EdgeDescriptor.of("""
+                    d->a:7, a->b:2, b->c:-4, c->a:5
+                """));
+        // act & assert
+        assertThrows(UnsupportedGraphException.class, () -> subject.run(g, 3));
     }
 
     @Test
@@ -34,13 +46,7 @@ class DjikstraTest {
         // assert
         System.out.println(Arrays.toString(data.getD()));
         System.out.println(Arrays.toString(data.getPi()));
-        assertEquals(7.0, data.getD()[1]);
-        assertEquals(9.0, data.getD()[2]);
-        assertEquals(16.0, data.getD()[3]);
-        assertEquals(19.0, data.getD()[4]);
-        assertEquals(17.0, data.getD()[5]);
-        assertEquals(2, data.getPi()[4]);
-        assertEquals(1, data.getPi()[2]);
-        assertEquals(0, data.getPi()[1]);
+        assertTrue(Arrays.equals(new double[]{0.0, 7.0, 9.0, 16.0, 19.0, 17.0}, data.getD()));
+        assertTrue(Arrays.equals(new int[]{-1, 0, 1, 1, 2, 3}, data.getPi()));
     }
 }
